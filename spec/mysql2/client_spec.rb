@@ -449,8 +449,8 @@ describe Mysql2::Client do
         end
       end
 
-      it "#socket should return a Fixnum (file descriptor from C)" do
-        @client.socket.class.should eql(Fixnum)
+      it "#socket should return a Integer (file descriptor from C)" do
+        @client.socket.class.should eql(Integer)
         @client.socket.should_not eql(0)
       end
 
@@ -710,7 +710,7 @@ describe Mysql2::Client do
     info = @client.info
     info.class.should eql(Hash)
     info.should have_key(:id)
-    info[:id].class.should eql(Fixnum)
+    info[:id].class.should eql(Integer)
     info.should have_key(:version)
     info[:version].class.should eql(String)
   end
@@ -746,7 +746,7 @@ describe Mysql2::Client do
     server_info = @client.server_info
     server_info.class.should eql(Hash)
     server_info.should have_key(:id)
-    server_info[:id].class.should eql(Fixnum)
+    server_info[:id].class.should eql(Integer)
     server_info.should have_key(:version)
     server_info[:version].class.should eql(String)
   end
@@ -805,7 +805,7 @@ describe Mysql2::Client do
       @client.should respond_to(:last_id)
     end
 
-    it "#last_id should return a Fixnum, the from the last INSERT/UPDATE" do
+    it "#last_id should return a Integer, the from the last INSERT/UPDATE" do
       @client.last_id.should eql(0)
       @client.query "INSERT INTO lastIdTest (blah) VALUES (1234)"
       @client.last_id.should eql(1)
@@ -815,7 +815,7 @@ describe Mysql2::Client do
       @client.should respond_to(:last_id)
     end
 
-    it "#last_id should return a Fixnum, the from the last INSERT/UPDATE" do
+    it "#last_id should return a Integer, the from the last INSERT/UPDATE" do
       @client.query "INSERT INTO lastIdTest (blah) VALUES (1234)"
       @client.affected_rows.should eql(1)
       @client.query "UPDATE lastIdTest SET blah=4321 WHERE id=1"
@@ -836,8 +836,8 @@ describe Mysql2::Client do
     @client.should respond_to(:thread_id)
   end
 
-  it "#thread_id should be a Fixnum" do
-    @client.thread_id.class.should eql(Fixnum)
+  it "#thread_id should be a Integer" do
+    @client.thread_id.class.should eql(Integer)
   end
 
   it "should respond to #ping" do

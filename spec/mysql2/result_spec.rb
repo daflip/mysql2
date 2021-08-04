@@ -186,8 +186,8 @@ describe Mysql2::Result do
       @test_result['single_bit_test'].should eql("\001")
     end
 
-    it "should return Fixnum for a TINYINT value" do
-      [Fixnum, Bignum].should include(@test_result['tiny_int_test'].class)
+    it "should return Integer for a TINYINT value" do
+      [Integer, Bignum].should include(@test_result['tiny_int_test'].class)
       @test_result['tiny_int_test'].should eql(1)
     end
 
@@ -223,28 +223,28 @@ describe Mysql2::Result do
       @client.query "DELETE from mysql2_test WHERE id IN(#{id1},#{id2})"
     end
 
-    it "should return Fixnum for a SMALLINT value" do
-      [Fixnum, Bignum].should include(@test_result['small_int_test'].class)
+    it "should return Integer for a SMALLINT value" do
+      [Integer, Bignum].should include(@test_result['small_int_test'].class)
       @test_result['small_int_test'].should eql(10)
     end
 
-    it "should return Fixnum for a MEDIUMINT value" do
-      [Fixnum, Bignum].should include(@test_result['medium_int_test'].class)
+    it "should return Integer for a MEDIUMINT value" do
+      [Integer, Bignum].should include(@test_result['medium_int_test'].class)
       @test_result['medium_int_test'].should eql(10)
     end
 
-    it "should return Fixnum for an INT value" do
-      [Fixnum, Bignum].should include(@test_result['int_test'].class)
+    it "should return Integer for an INT value" do
+      [Integer, Bignum].should include(@test_result['int_test'].class)
       @test_result['int_test'].should eql(10)
     end
 
-    it "should return Fixnum for a BIGINT value" do
-      [Fixnum, Bignum].should include(@test_result['big_int_test'].class)
+    it "should return Integer for a BIGINT value" do
+      [Integer, Bignum].should include(@test_result['big_int_test'].class)
       @test_result['big_int_test'].should eql(10)
     end
 
-    it "should return Fixnum for a YEAR value" do
-      [Fixnum, Bignum].should include(@test_result['year_test'].class)
+    it "should return Integer for a YEAR value" do
+      [Integer, Bignum].should include(@test_result['year_test'].class)
       @test_result['year_test'].should eql(2009)
     end
 

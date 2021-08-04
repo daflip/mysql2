@@ -565,7 +565,7 @@ module ActiveRecord
           quoted_column_names = case length
           when Hash
             column_names.map {|name| length[name] ? "#{quote_column_name(name)}(#{length[name]})" : quote_column_name(name) }
-          when Fixnum
+          when Integer
             column_names.map {|name| "#{quote_column_name(name)}(#{length})"}
           else
             column_names.map {|name| quote_column_name(name) }
@@ -604,7 +604,7 @@ module ActiveRecord
 
           # increase timeout so mysql server doesn't disconnect us
           wait_timeout = @config[:wait_timeout]
-          wait_timeout = 2147483 unless wait_timeout.is_a?(Fixnum)
+          wait_timeout = 2147483 unless wait_timeout.is_a?(Integer
           variable_assignments << "@@wait_timeout = #{wait_timeout}"
 
           execute("SET #{variable_assignments.join(', ')}", :skip_logging)
